@@ -516,7 +516,10 @@ public abstract class Loader {
 			}
 
 			if ( resultSet.isBeforeFirst() ) {
-				resultSet.next();
+				if ( !resultSet.next() ) {
+					// there are no results
+					return null;
+				}
 			}
 
 			// We call getKeyFromResultSet() here so that we can know the
